@@ -51,4 +51,6 @@ def welcome():
 <p>Station Anaylsis:</p>
 <ul>
   <li.<a href="/api/v1.0/stations">/api/v1.0/stations</a><li>
- </ul>
+</ul>
+<p>Temperature Analysis:<p/>
+<ul>
