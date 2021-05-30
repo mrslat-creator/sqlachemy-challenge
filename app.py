@@ -54,4 +54,7 @@ def welcome():
 </ul>
 <p>Temperature Analysis:<p/>
 <ul>
-   <
+   <li><a href="/api/v1.0/tobs">/api/v1.0/tobs</a></li>
+</ul>
+<p>Start Day Analysis:</p>
+<ul>
