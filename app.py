@@ -15,4 +15,5 @@ from sqalchemy.pool import StaticPool
 
 # Database Setup
 
-#
+# Reference
+engine = create_engine("sqlite:///Resources/hawaii.sqlite", connect_args={"check_same_thread": False}, poolclass=StaticPool, echo=True)
