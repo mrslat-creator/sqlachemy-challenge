@@ -17,3 +17,10 @@ from sqalchemy.pool import StaticPool
 
 # Reference
 engine = create_engine("sqlite:///Resources/hawaii.sqlite", connect_args={"check_same_thread": False}, poolclass=StaticPool, echo=True)
+
+# Reflect Existing Database Into a New Model
+Base = automap_base()
+# Reflect the Tables
+Base.prepare(engine, reflect=True)
+
+# Save Refrences to Each Table
