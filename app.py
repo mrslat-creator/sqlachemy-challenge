@@ -47,5 +47,8 @@ def welcome():
 <p>Precipation Analysis:</p>
 <ul>
   <li><a href="/api/v1.0/precipitation">/api/v1.0/percipitation</a></li>
+</ul>
+<p>Station Anaylsis:</p>
 <ul>
-<p>
+  <li.<a href="/api/v1.0/stations">/api/v1.0/stations</a><li>
+ </ul>
