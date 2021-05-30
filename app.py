@@ -35,6 +35,17 @@ session = Session(engine)
 ###################################
 app = Flask(_name_)
 
-
 ###################################
 # Flask Route
+###################################
+# Home Route
+@app.route("/")
+def welcome():
+       return"""<html>
+<h1>Hawaii Climate App (Flask API)</h1>
+<img src="https://i.ytimg.com/vi3ZMvhIO-d4/maxresdefault.jpg" alt="Hawaii Weather"/>
+<p>Precipation Analysis:</p>
+<ul>
+  <li><a href="/api/v1.0/precipitation">/api/v1.0/percipitation</a></li>
+<ul>
+<p>
