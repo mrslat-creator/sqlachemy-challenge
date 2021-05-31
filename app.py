@@ -1,5 +1,4 @@
 # Import Flask
-from logging import Manager
 from flask import Flask, jsonify
 
 # Dependencies and Setup
@@ -103,4 +102,9 @@ def tobs():
                  filter(Measurement.date >= recent_date).\
                  order_by(Measurement.date).all()
         # Convert List of Tuples Into Normal List
-        tobs_data_list
+        tobs_data_list = list(tobs_data)
+        # Return JSON List of Temperature Observations (tobs) for Previous Year
+        return jsonify(tobs_data_list)
+
+# Start Day Route
+@app.route("/api/v1.0/<start>")
