@@ -66,3 +66,8 @@ def welcome():
 </ul>
 </html>
 """
+
+# Precipitation Route
+@app.route("/api/v1.0/precipitation")
+def precipitation():
+      
