@@ -70,4 +70,10 @@ def welcome():
 # Precipitation Route
 @app.route("/api/v1.0/precipitation")
 def precipitation():
-      
+      # Convert the Qurery Results to a Dictionary Using 'date' as the Key and 'prcp' as the Value
+      # Calculate the Date 1 Year Ago from the Last Data Point in the Datanase
+      recent_date = dt.date(2017,8,23) - dt.timedelta(days=365)
+      # Design a Query to Retrive the Last 12 Months of Precipitation Data Selecting Only the 'date' and 'prcp' Values
+      prcp_data = session.query(Measurement.date, Measurement.prcp).\
+                filter(Measurement.date >= one_year_ago).\
+                order_by(Measurement)
