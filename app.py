@@ -108,3 +108,27 @@ def tobs():
 
 # Start Day Route
 @app.route("/api/v1.0/<start>")
+def start_end_day(start, end):
+         start_end_day = session.query(Measurement.date, func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+                  filter(Measurement.date >= start).\
+                  group_by(Measurement.date).all()
+         # Convert List of Tuples Into Normal List
+         start_end_day_list = list(start_end_day)
+         # Return JSON List of Min Temp, Avy Temp and Max Temp for a Given Start Range
+         return jsonify(start_day)_list)
+
+# Start-End Day Route
+@app.route("/api/v1.0/<start>/<end>")
+def start_end_day(start,end):
+        start_end_day = session.query(Measurement.date, func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement)).\
+                 filter(Measurement.date >= start).\
+                 filter(Measurement.date <= end).\
+                 group_by(Measurement.date)all()
+        # Convert List of Tuples Into Normal List
+        start_end_day_list = list(start_end_day)
+        # Return JSON List of Min Temp, Avg Temp and Max Temp for a Given Start-End Range
+        return jsonify(start_end_day_list)
+
+# Define Main Behavior
+if __name__ == '__main__':
+    app.run(debug=True)
