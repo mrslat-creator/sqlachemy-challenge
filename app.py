@@ -1,4 +1,5 @@
 # Import Flask
+from logging import Manager
 from flask import Flask, jsonify
 
 # Dependencies and Setup
@@ -89,4 +90,17 @@ def stations():
       stations_all = session.query(Station.station, Station.name).all()
       # Convert List of Tuples Into Normal List
       station_list = list(stations_all)
-      
+      # Return JSON List of Stations from the Dataset
+      return jsonify(station_list)
+
+# TOBs Route
+@app.route("/api/v1.0/tobs")
+def tobs():
+        # Query for the Dates and Temperature Observations from a Year from the Last Data Point
+        recent_date = dt.date(2017,8,23)  - dt.timedelta(days=365)
+        # Design a Query to Retrieve that Last 12 Months of Preciption Data Selecting Only the 'date' and 'prcp' Values
+        tobs_data = session.query(Measurement.date, Measurement.tobs).\
+                 filter(Measurement.date >= recent_date).\
+                 order_by(Measurement.date).all()
+        # Convert List of Tuples Into Normal List
+        tobs_data_list
