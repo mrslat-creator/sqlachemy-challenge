@@ -76,4 +76,17 @@ def precipitation():
       # Design a Query to Retrive the Last 12 Months of Precipitation Data Selecting Only the 'date' and 'prcp' Values
       prcp_data = session.query(Measurement.date, Measurement.prcp).\
                 filter(Measurement.date >= one_year_ago).\
-                order_by(Measurement)
+                order_by(Measurement.date).all()
+      # Convert List of Tuples Into a Dictionary
+      prcp_data_list = dict(prcp_data)
+      # Return JSON Representation of Dictionary
+      return jsonify(prcp_data_list)
+
+# Station Route
+@app.route("/api/v1.0/stations")
+def stations():
+      # Return a JSON List of Stations From the Dataset
+      stations_all = session.query(Station.station, Station.name).all()
+      # Convert List of Tuples Into Normal List
+      station_list = list(stations_all)
+      
